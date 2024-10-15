@@ -171,10 +171,7 @@
           "InfluxDB.Client": "4.15.0"
         },
         "runtime": {
-          "SmartEnergy.Library.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "SmartEnergy.Library.dll": {}
         }
       }
     }

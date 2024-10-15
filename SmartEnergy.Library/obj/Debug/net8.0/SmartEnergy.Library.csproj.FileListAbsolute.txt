@@ -11,3 +11,16 @@ C:\Users\koens\Documents\Avans\Projecten\Smart energy\ICT1.1-SmartEnergy-Project
 C:\Users\koens\Documents\Avans\Projecten\Smart energy\ICT1.1-SmartEnergy-Project\SmartEnergy.Library\obj\Debug\net8.0\SmartEnergy.Library.pdb
 C:\Users\koens\Documents\Avans\Projecten\Smart energy\ICT1.1-SmartEnergy-Project\SmartEnergy.Library\obj\Debug\net8.0\ref\SmartEnergy.Library.dll
 C:\Users\koens\Documents\Avans\Projecten\Smart energy\ICT1.1-SmartEnergy-Project\SmartEnergy.Library\obj\Debug\net8.0\SmartEnergy.Library.sourcelink.json
+C:\Users\Dhr Smit\Documents\avans\smartenergy\ICT1.1-SmartEnergy-Project\SmartEnergy.Library\bin\Debug\net8.0\SmartEnergy.Library.deps.json
+C:\Users\Dhr Smit\Documents\avans\smartenergy\ICT1.1-SmartEnergy-Project\SmartEnergy.Library\bin\Debug\net8.0\SmartEnergy.Library.dll
+C:\Users\Dhr Smit\Documents\avans\smartenergy\ICT1.1-SmartEnergy-Project\SmartEnergy.Library\bin\Debug\net8.0\SmartEnergy.Library.pdb
+C:\Users\Dhr Smit\Documents\avans\smartenergy\ICT1.1-SmartEnergy-Project\SmartEnergy.Library\obj\Debug\net8.0\SmartEnergy.Library.csproj.AssemblyReference.cache
+C:\Users\Dhr Smit\Documents\avans\smartenergy\ICT1.1-SmartEnergy-Project\SmartEnergy.Library\obj\Debug\net8.0\SmartEnergy.Library.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dhr Smit\Documents\avans\smartenergy\ICT1.1-SmartEnergy-Project\SmartEnergy.Library\obj\Debug\net8.0\SmartEnergy.Library.AssemblyInfoInputs.cache
+C:\Users\Dhr Smit\Documents\avans\smartenergy\ICT1.1-SmartEnergy-Project\SmartEnergy.Library\obj\Debug\net8.0\SmartEnergy.Library.AssemblyInfo.cs
+C:\Users\Dhr Smit\Documents\avans\smartenergy\ICT1.1-SmartEnergy-Project\SmartEnergy.Library\obj\Debug\net8.0\SmartEnergy.Library.csproj.CoreCompileInputs.cache
+C:\Users\Dhr Smit\Documents\avans\smartenergy\ICT1.1-SmartEnergy-Project\SmartEnergy.Library\obj\Debug\net8.0\SmartEnergy.Library.sourcelink.json
+C:\Users\Dhr Smit\Documents\avans\smartenergy\ICT1.1-SmartEnergy-Project\SmartEnergy.Library\obj\Debug\net8.0\SmartEnergy.Library.dll
+C:\Users\Dhr Smit\Documents\avans\smartenergy\ICT1.1-SmartEnergy-Project\SmartEnergy.Library\obj\Debug\net8.0\refint\SmartEnergy.Library.dll
+C:\Users\Dhr Smit\Documents\avans\smartenergy\ICT1.1-SmartEnergy-Project\SmartEnergy.Library\obj\Debug\net8.0\SmartEnergy.Library.pdb
+C:\Users\Dhr Smit\Documents\avans\smartenergy\ICT1.1-SmartEnergy-Project\SmartEnergy.Library\obj\Debug\net8.0\ref\SmartEnergy.Library.dll
