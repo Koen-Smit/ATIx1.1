@@ -24,9 +24,10 @@ namespace SmartEnergy.Client.Components.Pages
 
             /* there are multiple data streams available. Two for the value of the power meter (consumed, produced)
             one for the gas consumption and another one for the absolute power usage. All of the possible method calls:*/
-            measurements = await this.measurementRepository.GetEnergyConsumed(meterId, numberOfDays, aggegationWindow);
+            //measurements = await this.measurementRepository.GetEnergyConsumed(meterId, numberOfDays, aggegationWindow);
             //measurements = await this.measurementRepository.GetEnergyProduced(meterId, numberOfDays, aggegationWindow);
-            //measurements = await this.measurementRepository.GetPower(meterId, numberOfDays, aggegationWindow);
+            measurements = await this.measurementRepository.GetPower(meterId, numberOfDays, aggegationWindow);
+
         }
 
         private async Task RefreshData()

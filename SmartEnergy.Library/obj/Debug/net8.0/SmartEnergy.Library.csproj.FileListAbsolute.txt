@@ -10,3 +10,4 @@ C:\Users\koens\Documents\Avans\Projecten\Smart energy\ICT1.1-SmartEnergy-Project
 C:\Users\koens\Documents\Avans\Projecten\Smart energy\ICT1.1-SmartEnergy-Project\SmartEnergy.Library\obj\Debug\net8.0\refint\SmartEnergy.Library.dll
 C:\Users\koens\Documents\Avans\Projecten\Smart energy\ICT1.1-SmartEnergy-Project\SmartEnergy.Library\obj\Debug\net8.0\SmartEnergy.Library.pdb
 C:\Users\koens\Documents\Avans\Projecten\Smart energy\ICT1.1-SmartEnergy-Project\SmartEnergy.Library\obj\Debug\net8.0\ref\SmartEnergy.Library.dll
+C:\Users\koens\Documents\Avans\Projecten\Smart energy\ICT1.1-SmartEnergy-Project\SmartEnergy.Library\obj\Debug\net8.0\SmartEnergy.Library.sourcelink.json

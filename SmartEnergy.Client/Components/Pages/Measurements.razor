@@ -74,9 +74,9 @@ else
         /* TODO: there are multiple data streams available. Two for the value of the power meter (consumed, produced)
         one for the gas consumption and another one for the absolute power usage. All of the possible method calls
         are listed below and you can select the one that meets your needs/requirements. */
-        //measurements = await this.measurementRepository.GetEnergyConsumed(meterId, numberOfDays, aggegationWindow);
+        measurements = await this.measurementRepository.GetEnergyConsumed(meterId, numberOfDays, aggegationWindow);
         // measurements = await this.measurementRepository.GetEnergyProduced(meterId, numberOfDays, aggegationWindow);
         // measurements = await this.measurementRepository.GetGasDelivered(meterId, numberOfDays, aggegationWindow);
-        measurements = await this.measurementRepository.GetPower(meterId, numberOfDays, aggegationWindow);
+        // measurements = await this.measurementRepository.GetPower(meterId, numberOfDays, aggegationWindow);
     }
 }
