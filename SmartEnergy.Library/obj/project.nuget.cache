@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "dgSpecHash": "rU6i5dCZVcc=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\koens\\Documents\\Avans\\Projecten\\Smart energy\\ICT1.1-SmartEnergy-Project\\SmartEnergy.Library\\SmartEnergy.Library.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\koens\\.nuget\\packages\\csvhelper\\31.0.2\\csvhelper.31.0.2.nupkg.sha512",
+    "C:\\Users\\koens\\.nuget\\packages\\influxdb.client\\4.15.0\\influxdb.client.4.15.0.nupkg.sha512",
+    "C:\\Users\\koens\\.nuget\\packages\\influxdb.client.core\\4.15.0\\influxdb.client.core.4.15.0.nupkg.sha512",
+    "C:\\Users\\koens\\.nuget\\packages\\jsonsubtypes\\2.0.1\\jsonsubtypes.2.0.1.nupkg.sha512",
+    "C:\\Users\\koens\\.nuget\\packages\\microsoft.extensions.objectpool\\8.0.3\\microsoft.extensions.objectpool.8.0.3.nupkg.sha512",
+    "C:\\Users\\koens\\.nuget\\packages\\microsoft.extensions.primitives\\2.2.0\\microsoft.extensions.primitives.2.2.0.nupkg.sha512",
+    "C:\\Users\\koens\\.nuget\\packages\\microsoft.net.http.headers\\2.2.8\\microsoft.net.http.headers.2.2.8.nupkg.sha512",
+    "C:\\Users\\koens\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\koens\\.nuget\\packages\\nodatime\\3.1.11\\nodatime.3.1.11.nupkg.sha512",
+    "C:\\Users\\koens\\.nuget\\packages\\nodatime.serialization.jsonnet\\3.1.0\\nodatime.serialization.jsonnet.3.1.0.nupkg.sha512",
+    "C:\\Users\\koens\\.nuget\\packages\\restsharp\\110.1.0\\restsharp.110.1.0.nupkg.sha512",
+    "C:\\Users\\koens\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
+    "C:\\Users\\koens\\.nuget\\packages\\system.collections.immutable\\8.0.0\\system.collections.immutable.8.0.0.nupkg.sha512",
+    "C:\\Users\\koens\\.nuget\\packages\\system.configuration.configurationmanager\\8.0.0\\system.configuration.configurationmanager.8.0.0.nupkg.sha512",
+    "C:\\Users\\koens\\.nuget\\packages\\system.diagnostics.eventlog\\8.0.0\\system.diagnostics.eventlog.8.0.0.nupkg.sha512",
+    "C:\\Users\\koens\\.nuget\\packages\\system.memory\\4.5.1\\system.memory.4.5.1.nupkg.sha512",
+    "C:\\Users\\koens\\.nuget\\packages\\system.reactive\\6.0.0\\system.reactive.6.0.0.nupkg.sha512",
+    "C:\\Users\\koens\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.7.1\\system.runtime.compilerservices.unsafe.4.7.1.nupkg.sha512",
+    "C:\\Users\\koens\\.nuget\\packages\\system.security.cryptography.protecteddata\\8.0.0\\system.security.cryptography.protecteddata.8.0.0.nupkg.sha512",
+    "C:\\Users\\koens\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
+    "C:\\Users\\koens\\.nuget\\packages\\system.text.json\\7.0.2\\system.text.json.7.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

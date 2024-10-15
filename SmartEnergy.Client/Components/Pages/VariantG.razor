@@ -1,0 +1,159 @@
+@page "/VariantG"
+@attribute [StreamRendering]
+@inject IMeasurementRepository measurementRepository;
+@rendermode InteractiveServer
+
+<PageTitle>Variant G</PageTitle>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<div class="container mt-2">
+    <div class="text-center">
+        <h1 class="display-4">Variant @variant</h1>
+        <p class="lead">Door: @name</p>
+    </div>
+
+<!-- ------------------------------------------------Informatie over het algoritme------------------------------------------------ -->
+    <div class="row">
+        <!-- https://getbootstrap.com/docs/5.3/components/accordion/ -->
+        <div class="accordion" id="accordionAlgoritme">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button h2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Het algoritme:
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionAlgoritme">
+                    <div class="accordion-body">
+                        <!-- opent modal voor context-info -->
+                        <em class="text-primary" style="cursor: pointer; font-size: 14px; font-weight: 600;" data-toggle="modal" data-target="#contextModal" id="openContextModal">Klik hier voor meer context over waarom dit algoritme belangrijk is.</em>
+                        <p class="text-justify">
+                            Bereken over een instelbare tijdsperiode het energieverbruik en de kosten per dag. 
+                            Ga uit van de dynamische energietarieven die in het betreffende tijdsblok gelden. 
+                            Bereken daarnaast de kosten indien het opgenomen vermogen groter is dan een bepaalde waarde. 
+                            Pas de dynamische prijs toe met het bijbehorende toeslagpercentage voor het opgenomen vermogen op dat moment, 
+                            <p><em>zie hiervoor de onderstaande tabel.</em></p>
+                        </p>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <table class="table table-striped table-bordered table-hover mt-1">
+                                    <thead class="thead-dark text-center">
+                                        <tr>
+                                            <th>Vermogen in Watt</th>
+                                            <th>Toeslag op de energieprijs in %</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-center">
+                                        <tr>
+                                            <td>0 - 1000</td>
+                                            <td>0%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1001 - 2000</td>
+                                            <td>25%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2001 - 3000</td>
+                                            <td>38%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3001 - 4000</td>
+                                            <td>44%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4001 - hoger</td>
+                                            <td>47%</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p class="mt-2">
+                                    Toon onder de dagelijkse analyse het totaal verbruikte energie, de totale kosten met en zonder capaciteittarief 
+                                    en het gemiddelde percentage van de toeslag over deze periode.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ------------------------------------------------ Modal voor context-info ------------------------------------------------ -->
+<!-- https://getbootstrap.com/docs/5.3/components/modal/ -->
+<div class="modal fade" id="contextModal" tabindex="-1" aria-labelledby="contextModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="contextModalLabel">Piektransport context:</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Piektransport (grote vermogens op bepaalde momenten) levert een grote kostenpost voor de netbeheerder 
+                    en stagneert de energietransitie door congestieproblemen (file op het elektriciteitsnet). Een methode om 
+                    mensen bewust te maken hiervan en hun energie wat te spreiden kan gedaan worden door een capaciteitstarief 
+                    in te voeren. Heb je meer vermogen nodig op een bepaald moment dan kom je in een hogere schaal en betaal je 
+                    meer voor je energie. Dit wordt bijvoorbeeld in België gedaan. Ook in Nederland zijn er ideeën om iets 
+                    soortgelijks in te voeren.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sluit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    //Modal voor context-info, Openen en sluiten
+    document.getElementById('openContextModal').addEventListener('click', () => {
+        var contextModal = new bootstrap.Modal(document.querySelector(`#contextModal`));
+        contextModal.show();
+    });
+</script>
+
+<!-- ------------------------------------------------  resultaten van het algoritme ------------------------------------------------ -->
+@*, met parameters zoals tijdperiode *@
+
+@if (measurements == null)
+{
+    <p><em>Data wordt geladen...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Timestamp (UTC)</th>
+                <th>Location ID</th>
+                <th>Sensor</th>
+                <th>Value</th>
+                <th>Unit</th>
+                <th>Price (energy only)</th>
+                <th>Temperature</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var measurement in measurements)
+            {
+                <tr>
+                    <td>@measurement.Timestamp</td>
+                    <td>@measurement.LocationId</td>
+                    <td>@measurement.Sensor</td>
+                    <td>@measurement.Value</td>
+                    <td>@measurement.Unit</td>
+                    <td>@measurement.EnergyPrice</td>
+                    <td>@measurement.Temperature</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<button class="btn btn-primary" @onclick="RefreshData">Ververs data</button>
+

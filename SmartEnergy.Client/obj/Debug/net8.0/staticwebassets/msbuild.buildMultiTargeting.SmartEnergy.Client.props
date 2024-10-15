@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\SmartEnergy.Client.props" />
+</Project>
