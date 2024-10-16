@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SmartEnergy.Library")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d5a1abe66d7c98743d025fed622c0ed2b2b37d91")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+070850533ae31f75cd331b98ab0dade12c7f9c84")]
 [assembly: System.Reflection.AssemblyProductAttribute("SmartEnergy.Library")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SmartEnergy.Library")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

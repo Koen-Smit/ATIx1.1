@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2Y1JxLq6JvzXa9eWftBNy+pk9f7W1atsq0aMkq5P4gs=",
+  "Hash": "Re2FYreNwmbpHyLGka4WUPjxWbGzTTTzaA8pIpYFiEY=",
   "Source": "SmartEnergy.Client",
   "BasePath": "_content/SmartEnergy.Client",
   "Mode": "Default",
@@ -110,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.png"
+    },
+    {
+      "Identity": "C:\\Users\\Dhr Smit\\Documents\\avans\\smartenergy\\ICT1.1-SmartEnergy-Project\\SmartEnergy.Client\\wwwroot\\VariantG.css",
+      "SourceId": "SmartEnergy.Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Dhr Smit\\Documents\\avans\\smartenergy\\ICT1.1-SmartEnergy-Project\\SmartEnergy.Client\\wwwroot\\",
+      "BasePath": "_content/SmartEnergy.Client",
+      "RelativePath": "VariantG.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\VariantG.css"
     }
   ]
 }
