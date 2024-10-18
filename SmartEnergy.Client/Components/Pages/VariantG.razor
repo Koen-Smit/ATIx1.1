@@ -10,13 +10,12 @@
     <link href="VariantG.css" rel="stylesheet" />
 </head>
 
-<div class="container mt-2">
+<!-- ------------------------------------------------Informatie over het algoritme------------------------------------------------ -->
+<div class="container mt-2 mb-2">
     <div class="text-center">
         <h1 class="display-4">Variant @variant</h1>
         <p class="lead">Door: @name</p>
     </div>
-
-<!-- ------------------------------------------------Informatie over het algoritme------------------------------------------------ -->
     <div class="row">
         <!-- https://getbootstrap.com/docs/5.3/components/accordion/ -->
         <div class="accordion" id="accordionAlgoritme">
@@ -85,6 +84,78 @@
         </div>
     </div>
 </div>
+
+<!-- ------------------------------------------------  resultaten van het algoritme ------------------------------------------------ -->
+@* cards met analyse data. *@
+<div class="container mt-4 mb-5">
+    <div class="row">
+        <div class="col-md-6 d-flex flex-column">
+
+            @* dagelijkse analyse card *@
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h3 class="card-title">Dagelijkse analyse</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <p><strong>Totaal verbruikte energie: </strong>@totalUsageToday kWh</p>
+                            
+                            <p><strong>Totale kosten zonder capaciteitstarief: </strong> @if (totalPriceWithoutSurchargeToday != null) {@totalPriceWithoutSurchargeToday.Value.ToString("C") } else { <em>Geen prijs berekend.</em> }</p>
+                            <p><strong>Totale kosten met capaciteitstarief: </strong> @if (totalPriceWithSurchargeToday != null) {@totalPriceWithSurchargeToday.Value.ToString("C") } else { <em>Geen prijs berekend.</em> }</p>
+                            <p><strong>Gemiddelde toeslag: </strong>@averageSurchargeToday %</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @* instellingen card *@
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Instellingen</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <label for="tijdsperiode" class="form-label"><strong>Selecteer uw periode:</strong></label>
+                            <p><em>De hoeveelheid afgelopen dagen die u zichtbaar wil zien, minimaal 1, maximaal 30.</em></p>
+                            <p><em> Metingen worden gedaan om het uur.</em></p>
+                            <div class="col-md-6">
+                                <input type="range" class="form-range" id="tijdsperiode" min="1" max="30" step="1" @bind="tijdsPeriode"/>
+                                <output id="tijdsperiodeOutput"> @if (tijdsPeriode >= 1 && tijdsPeriode <= 30) {@tijdsPeriode <span>Dag(en)</span>} else {<p>Geen geldig aantal dagen. Aantal dagen naar 1 gezet.</p>}</output>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <button class="btn btn-primary" @onclick="setDays">Bereken</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            @* analyse resultaat card *@
+            <div class="card h-100">
+                <div class="card-header">
+                    <h3 class="card-title"><output id="tijdsperiodeOutput"> @if (tijdsPeriode >= 1 && tijdsPeriode <= 30) {<span>Analyse voor: </span>@numberOfDays <span>dag(en)</span>} else {<p>Geen geldig aantal dagen. Aantal naar 1 dag analyse gezet.</p>}</output></h3>
+                </div>
+                <div class="card-body d-flex flex-column justify-content-center">
+                    <div class="row mt-2">
+                        <div class="col-md-10">
+                            <p><strong>Totaal verbruikte energie: </strong>@totalUsage kWh</p>
+                            <p><strong>Totale kosten zonder capaciteitstarief: </strong> @if (totalPriceWithoutSurcharge != null) {@totalPriceWithoutSurcharge.Value.ToString("C") } else { <em>Geen prijs berekend.</em> }</p>
+                            <p><strong>Totale kosten met capaciteitstarief: </strong> @if (totalPriceWithSurcharge != null) {@totalPriceWithSurcharge.Value.ToString("C") } else { <em>Geen prijs berekend.</em> }</p>
+                            <p><strong>Gemiddelde toeslag: </strong>@averageSurcharge %</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- ------------------------------------------------ Modal voor context-info ------------------------------------------------ -->
 <!-- https://getbootstrap.com/docs/5.3/components/modal/ -->
 <div class="modal fade" id="contextModal" tabindex="-1" aria-labelledby="contextModalLabel" aria-hidden="true">
@@ -118,151 +189,3 @@
         contextModal.show();
     });
 </script>
-
-<!-- ------------------------------------------------  resultaten van het algoritme ------------------------------------------------ -->
-@*, met parameters zoals tijdperiode *@
-
-
-<div class="container mt-2">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Dagelijkse analyse</h3>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <p><strong>Totaal verbruikte energie:</strong> 0 kWh</p>
-                            <p><strong>Totale kosten zonder capaciteitstarief:</strong> €0,00</p>
-                            <p><strong>Totale kosten met capaciteitstarief:</strong> €0,00</p>
-                            <p><strong>Gemiddelde toeslag:</strong> 0%</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- ------------------------------------------------  inputvelden ------------------------------------------------ -->
-<div class="container mt-2">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Instellingen</h3>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <label for="tijdsperiode" class="form-label">Selecteer uw periode:</label>
-                            <p><em>De hoeveelheid dagen die u zichtbaar wil zien, minimaal 1, maximaal 30.</em></p>
-                            <div class="col-md-6">
-                                <input type="range" class="form-range" id="tijdsperiode" min="1" max="30" step="1" @bind="tijdsPeriode"/>
-                                <output id="tijdsperiodeOutput">@tijdsPeriode Dagen</output>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-6">
-                            <button class="btn btn-primary" @onclick="setDays">Bereken</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="container mt-2">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Totale prijs</h3>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button class="btn btn-primary" @onclick="setDays">Bereken totale prijs</button>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-12">
-                            @if (calculatedPrice.HasValue)
-                            {
-                                <p>De totale prijs is: @calculatedPrice.Value.ToString("C")</p>
-                            }
-                            else
-                            {
-                                <p>Geen prijs berekend.</p>
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-@if (measurements == null)
-{
-    <p><em>Data wordt geladen...</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Timestamp (UTC)</th>
-                <th>Location ID</th>
-                <th>Sensor</th>
-                <th>Value</th>
-                <th>Unit</th>
-                <th>Price (energy only)</th>
-                <th>Temperature</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var measurement in measurements)
-            {
-                <tr>
-                    <td>@measurement.Timestamp</td>
-                    <td>@measurement.LocationId</td>
-                    <td>@measurement.Sensor</td>
-                    <td>@measurement.Value</td>
-                    <td>@measurement.Unit</td>
-                    <td>@measurement.EnergyPrice</td>
-                    <td>@measurement.Temperature</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-<button class="btn btn-primary" @onclick="RefreshData">Ververs data</button>
-
-
