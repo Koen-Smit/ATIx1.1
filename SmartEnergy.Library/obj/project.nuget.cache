@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "m2z8jwrm60Fibeq1O16ywD1jRc77k4Hh1+z8kND0ns7vW8BOf17fqMKQd1JViCZ0QW6cUpGxl1vqYWAYtXgddA==",
+  "dgSpecHash": "+Vg03sYgBjwb6sUcoPWRSRWkSyPLB9NINgTIwBPMhJ0zCft2kTlIzFYRNt4a5SIx46hRV3ocyqdAsR/dMURC4Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Dhr Smit\\Documents\\avans\\smartenergy\\ICT1.1-SmartEnergy-Project\\SmartEnergy.Library\\SmartEnergy.Library.csproj",
+  "projectFilePath": "C:\\Users\\Dhr Smit\\Documents\\Programming\\Projects\\project folder\\avans\\smartenergy\\ICT1.1-SmartEnergy-Project\\SmartEnergy.Library\\SmartEnergy.Library.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dhr Smit\\.nuget\\packages\\csvhelper\\31.0.2\\csvhelper.31.0.2.nupkg.sha512",
     "C:\\Users\\Dhr Smit\\.nuget\\packages\\influxdb.client\\4.15.0\\influxdb.client.4.15.0.nupkg.sha512",

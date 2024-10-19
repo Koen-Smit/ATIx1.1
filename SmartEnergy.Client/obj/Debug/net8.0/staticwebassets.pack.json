@@ -1,23 +1,23 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Dhr Smit\\Documents\\avans\\smartenergy\\ICT1.1-SmartEnergy-Project\\SmartEnergy.Client\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SmartEnergy.Client.bundle.scp.css",
+      "Id": "C:\\Users\\Dhr Smit\\Documents\\Programming\\Projects\\project folder\\avans\\smartenergy\\ICT1.1-SmartEnergy-Project\\SmartEnergy.Client\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SmartEnergy.Client.bundle.scp.css",
       "PackagePath": "staticwebassets\\SmartEnergy.Client.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\Dhr Smit\\Documents\\avans\\smartenergy\\ICT1.1-SmartEnergy-Project\\SmartEnergy.Client\\wwwroot\\VariantG.css",
+      "Id": "C:\\Users\\Dhr Smit\\Documents\\Programming\\Projects\\project folder\\avans\\smartenergy\\ICT1.1-SmartEnergy-Project\\SmartEnergy.Client\\wwwroot\\VariantG.css",
       "PackagePath": "staticwebassets\\VariantG.css"
     },
     {
-      "Id": "C:\\Users\\Dhr Smit\\Documents\\avans\\smartenergy\\ICT1.1-SmartEnergy-Project\\SmartEnergy.Client\\wwwroot\\app.css",
+      "Id": "C:\\Users\\Dhr Smit\\Documents\\Programming\\Projects\\project folder\\avans\\smartenergy\\ICT1.1-SmartEnergy-Project\\SmartEnergy.Client\\wwwroot\\app.css",
       "PackagePath": "staticwebassets\\app.css"
     },
     {
-      "Id": "C:\\Users\\Dhr Smit\\Documents\\avans\\smartenergy\\ICT1.1-SmartEnergy-Project\\SmartEnergy.Client\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Id": "C:\\Users\\Dhr Smit\\Documents\\Programming\\Projects\\project folder\\avans\\smartenergy\\ICT1.1-SmartEnergy-Project\\SmartEnergy.Client\\wwwroot\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\Dhr Smit\\Documents\\avans\\smartenergy\\ICT1.1-SmartEnergy-Project\\SmartEnergy.Client\\wwwroot\\favicon.png",
+      "Id": "C:\\Users\\Dhr Smit\\Documents\\Programming\\Projects\\project folder\\avans\\smartenergy\\ICT1.1-SmartEnergy-Project\\SmartEnergy.Client\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
