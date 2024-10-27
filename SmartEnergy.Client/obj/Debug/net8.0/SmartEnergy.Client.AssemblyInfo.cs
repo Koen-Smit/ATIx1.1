@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SmartEnergy.Client")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dfd0fc5a823b4c547ea73ce556ca618da25cc7a2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9fbb643d79a8549aaaf7cc3c08cfd5ec528d5b51")]
 [assembly: System.Reflection.AssemblyProductAttribute("SmartEnergy.Client")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SmartEnergy.Client")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

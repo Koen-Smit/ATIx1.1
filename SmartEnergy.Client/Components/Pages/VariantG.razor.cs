@@ -1,4 +1,5 @@
 using SmartEnergy.Library.Measurements.Models;
+using Microsoft.JSInterop;
 
 namespace SmartEnergy.Client.Components.Pages
 {
@@ -7,9 +8,9 @@ namespace SmartEnergy.Client.Components.Pages
         string name = "Koen Smit";
         string variant = "G";
         int meterId = 15432909;
-        private int tijdsPeriode = 1;
-        //20s (20 seconds), 5m (5 minutes) or 1h (1 hour).
+        private int tijdsPeriode { get; set; } = 1;
         string aggegationWindow = "1h";
+        //20s (20 seconds), 5m (5 minutes) or 1h (1 hour).
         private List<double?> calculatedPrice = new List<double?> { 0, 0, 0 };
         double? totalPriceWithSurcharge = 0;
         double? totalPriceWithoutSurcharge = 0;
@@ -20,8 +21,11 @@ namespace SmartEnergy.Client.Components.Pages
         double? averageSurchargeToday = 0;
         double? totalUsageToday = 0;
         int numberOfDays = 1;
-
+        private bool IsChartVisible { get; set; } = false;
         private List<Measurement>? measurements;
+        private List<double> totalUsageList = new List<double>();
+        private List<double> totalCostsList = new List<double>();
+        private List<double> totalPercentageList = new List<double>();
         protected override async Task OnInitializedAsync()
         {
             int numberOfDays = 1;
@@ -49,13 +53,51 @@ namespace SmartEnergy.Client.Components.Pages
             //roep de data op voor het aantal geselecteerde dagen
             aggegationWindow = "1h";
             measurements = await this.measurementRepository.GetPower(meterId, numberOfDays, aggegationWindow);
+            
+            // Create a dictionary to accumulate usage per day
+            var dailyUsage = new Dictionary<string, double>();
+
+            // Group by date and sum values
+            foreach (var measurement in measurements)
+            {
+                // Format the date as "yyyy-MM-dd" for easier grouping
+                string dateKey = measurement.Timestamp.ToString("yyyy-MM-dd");
+                
+                // Accumulate the usage values
+                if (!dailyUsage.ContainsKey(dateKey))
+                {
+                    dailyUsage[dateKey] = 0; // Initialize if not present
+                }
+                //make value / 1000 for kwh
+                double kwhValue = measurement.Value.Value / 1000;
+                dailyUsage[dateKey] += kwhValue;
+            }
+
+            totalUsageList = dailyUsage.OrderBy(entry => entry.Key).Select(entry => entry.Value).ToList();
+            
             //bereken de prijs, totale value en prijs zonder toeslag
             calculatedPrice = CalculatePrice(measurements, aggegationWindow);
             totalPriceWithSurcharge = calculatedPrice[0];
             totalPriceWithoutSurcharge = calculatedPrice[1];
             totalUsage = calculatedPrice[2];
             averageSurcharge = calculatedPrice[3];
+
+            //maak chart container zichtbaar
+            IsChartVisible = true;
+            await RenderChart("usagekwh", totalUsageList, totalCostsList, totalPercentageList);
         }
+
+        //buttons voor chart keuze
+        private async Task RenderUsageChart() => await RenderChart("usagekwh", totalUsageList, totalCostsList, totalPercentageList);
+        private async Task RenderCostChart() => await RenderChart("costs", totalUsageList, totalCostsList, totalPercentageList);
+        private async Task RenderPercentageChart() => await RenderChart("percentage", totalUsageList, totalCostsList, totalPercentageList);
+
+        private async Task RenderChart(string datasetType, List<double> totalUsageData, List<double> totalCostsData, List<double> totalPercentageData)
+        {
+            // Render de chart met de data
+            await JS.InvokeVoidAsync("renderChart", datasetType, tijdsPeriode, totalUsageData, totalCostsData, totalPercentageData);
+        }
+
 
         //bereken de prijs, totale value en prijs zonder toeslag
         private List<double?> CalculatePrice(List<Measurement> measurements, string aggregationWindow)
@@ -151,6 +193,9 @@ namespace SmartEnergy.Client.Components.Pages
                     totalPriceNoAddition += priceChangeWithoutSurcharge;
                     totalPrice += priceChangeWithSurcharge;
 
+                    totalCostsList.Add(priceChangeWithSurcharge);
+                    double surchargePercentageData = surchargePercentage * 100;
+                    totalPercentageList.Add(surchargePercentageData);
                     if (surchargePercentage > 0)
                     {
                         totalSurchargePercentage += surchargePercentage;
@@ -167,6 +212,8 @@ namespace SmartEnergy.Client.Components.Pages
 
             return new List<double?> { totalPrice, totalPriceNoAddition, totalUsage, averageSurchargePercentage };
         }
+
+
     }
 }
 
