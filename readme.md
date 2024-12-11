@@ -5,7 +5,7 @@ In dit project maakte we gebruik van een online database, deze database bestond 
 Cijfer voor het praktijkonderdeel van dit project(deze site dus): 10
 
 
-#README GEKREGEN DOOR SCHOOL:
+# README GEKREGEN DOOR SCHOOL:
 ## Welkom bij Smart Energy
 
 Voordat je begint met het uitbreiden van de applicatie, is het belangrijk dat je deze readme goed doorneemt en alle noodzakelijke stappen uitvoert.
