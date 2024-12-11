@@ -1,5 +1,12 @@
+# Avans Leerjaar 1, Periode 1: ATIx ICT-B1.1 Smart Meter Data Processing 2024-25 P1
+Gemaakt in: Blazor (C#, HTML, CSS, Bootstrap, Javascript)
+In dit project maakte we gebruik van een online database, deze database bestond uit data van "smart meters" die de studenten aangesloten hadden aan hun meterkast. Dingen zoals elektriciteit en gas verbruik en opwek waren te zien en hiermee moesten wij tabellen/grafieken doen en kregen we een casus voor berekeningen die we hiermee moesten uitvoeren. Dit is het uiteindelijke product wat ik gemaakt had.
 
-# Welkom bij Smart Energy
+Cijfer voor het praktijkonderdeel van dit project(deze site dus): 10
+
+
+#README GEKREGEN DOOR SCHOOL:
+## Welkom bij Smart Energy
 
 Voordat je begint met het uitbreiden van de applicatie, is het belangrijk dat je deze readme goed doorneemt en alle noodzakelijke stappen uitvoert.
 
