@@ -1,84 +1,151 @@
-# Avans Leerjaar 1, Periode 1: ATIx ICT-B1.1 Smart Meter Data Processing 2024-25 P1
-Gemaakt in: Blazor (C#, HTML, CSS, Bootstrap, Javascript)
-In dit project maakte we gebruik van een online database, deze database bestond uit data van "smart meters" die de studenten aangesloten hadden aan hun meterkast. Dingen zoals elektriciteit en gas verbruik en opwek waren te zien en hiermee moesten wij tabellen/grafieken doen en kregen we een casus voor berekeningen die we hiermee moesten uitvoeren. Dit is het uiteindelijke product wat ik gemaakt had.
+# Year 1, Semester 1: ATIx ICT-B1.1 Smart Meter Data Processing (2024-25)
+- (04-09-2024 / 01/11/2024)
 
-Cijfer voor het praktijkonderdeel van dit project(deze site dus): 10
+**Built with:** Blazor (.NET C#, HTML, CSS, Bootstrap, JavaScript)
 
+## Project Overview
+This project was developed as part of the first-year, first-period coursework for ATIx ICT-B1.1. The primary goal was to process and visualize data collected from smart meters connected to residential electricity and gas systems. 
 
-# README GEKREGEN DOOR SCHOOL:
-## Welkom bij Smart Energy
+### Functionality
+- **Data Visualization:** Tables and charts to analyze electricity and gas usage.
+- **Dynamic Tariff Calculations:** Algorithms to compute energy costs based on real-time tariffs, including surcharges for high power usage.
+- **Customizable Analysis:** Adjustable time periods for data aggregation and analysis.
 
-Voordat je begint met het uitbreiden van de applicatie, is het belangrijk dat je deze readme goed doorneemt en alle noodzakelijke stappen uitvoert.
+### Context
+This project was graded a 10 (out of 10). However, the application can no longer be used because the database it relies on has been decommissioned and is no longer connected to any live smart meters(as far as I know).
 
-## Configuratie van InfluxDB
+---
 
-Deze applicatie maakt gebruik van InfluxDB, een database die speciaal geschikt is voor het verwerken van grote hoeveelheden gegevens. Om verbinding te maken met deze database heb je een wachtwoord nodig. **We slaan nooit gevoelige gegevens (secrets) op in de broncode** en daarom moet je het wachtwoord eerst op je eigen machine instellen. We gebruiken hiervoor `dotnet user-secrets`. 
+## Prerequisites
+This project relies on an InfluxDB database to store and query smart meter data. Sensitive credentials like database URLs, tokens, and organization details must be configured on your local machine using `.NET user-secrets`.
 
-### Stappen voor Configuratie
+### Setting Up InfluxDB
 
-#### 1. Open een Command Line Interface (CLI)
+1. **Open a Command Line Interface (CLI):**
+   - You can use Command Prompt (CMD), PowerShell, or any Bash-compatible terminal.
 
-Dit kan CMD, Bash, of PowerShell zijn. De voorbeelden hieronder zijn gebaseerd op CMD, maar ze werken ook in PowerShell.
+2. **Navigate to the Project Directory:**
+   ```bash
+   cd path_to_your_project/SmartEnergy/SmartEnergy.Client
+   ```
 
-#### 2. Navigeer naar de map met de SmartEnergy.Client-bestanden
+3. **Initialize User-Secrets:**
+   ```bash
+   dotnet user-secrets init
+   ```
 
-Pas de volgende opdracht aan naar de locatie van jouw projectbestanden voordat je deze uitvoert.
-```sh
-cd C:\jouw_project_map\SmartEnergy\SmartEnergy.Client
+4. **Set InfluxDB Credentials:**
+   Replace placeholders with actual values:
+   ```bash
+   dotnet user-secrets set "InfluxDb:Url" "your_influxdb_url"
+   dotnet user-secrets set "InfluxDb:Token" "your_influxdb_token"
+   dotnet user-secrets set "InfluxDb:Org" "your_influxdb_organization"
+   ```
+
+---
+
+## Application Structure
+The project is split into two main components:
+
+### 1. **SmartEnergy.Client**
+   - A Blazor-based web application responsible for front-end functionality.
+   - Built with **Bootstrap** for responsive design. [Bootstrap Documentation](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
+
+   **Features:**
+   - Interactive dashboards and controls for customizing time periods.
+   - Dynamic charts to visualize usage, costs, and surcharges.
+
+### 2. **SmartEnergy.Library**
+    (MOSTLY MADE BY SCHOOL!)
+   - Contains backend logic for querying the database and processing data.
+   - Handles API calls to retrieve smart meter measurements.
+
+---
+
+## Development Environment
+
+### Run Profiles
+- **Debug Mode:** Enables breakpoints for backend debugging but requires restarting after code changes.
+- **Hot Reload:** Automatically refreshes the browser after code changes but does not support breakpoints.
+
+---
+
+## Core Algorithm
+The application calculates energy usage and costs over a customizable time period. It dynamically applies surcharges based on power usage thresholds. Key calculations include:
+
+- **Total Usage (kWh):** Aggregated over the selected time period.
+- **Base Cost:** Calculated using dynamic energy tariffs.
+- **Surcharge:** Applied progressively based on the following thresholds:
+  
+  | Power Usage (Watt) | Surcharge (%) |
+  |--------------------|---------------|
+  | 0 - 1000           | 0%            |
+  | 1001 - 2000        | 25%           |
+  | 2001 - 3000        | 38%           |
+  | 3001 - 4000        | 44%           |
+  | > 4000             | 47%           |
+
+---
+
+## Usage Example
+The following code snippet demonstrates the main logic:
+
+```csharp
+private List<double?> CalculatePrice(List<Measurement> measurements, string aggregationWindow)
+{
+    if (measurements == null || measurements.Count == 0)
+    {
+        return new List<double?> { 0, 0, 0, 0 };
+    }
+
+    double totalUsage = 0;
+    double totalPriceNoAddition = 0;
+    double totalPrice = 0;
+    double totalSurchargePercentage = 0;
+    int surchargeCount = 0;
+    object lockObject = new object();
+
+    double timeFactor = aggregationWindow switch
+    {
+        "20s" => 20.0 / 3600.0,
+        "5m" => 5.0 / 60.0,
+        "1h" => 1.0,
+        _ => throw new ArgumentException("Invalid aggregation window")
+    };
+
+    Parallel.ForEach(measurements, measurement =>
+    {
+        if (measurement.Value == null || measurement.EnergyPrice == null || measurement.Value <= 0 || measurement.EnergyPrice <= 0)
+        {
+            return;
+        }
+
+        double kiloWattValue = measurement.Value.Value / 1000;
+        double surchargePercentage = measurement.Value > 4000 ? 0.47 :
+                                      measurement.Value > 3000 ? 0.44 :
+                                      measurement.Value > 2000 ? 0.38 :
+                                      measurement.Value > 1000 ? 0.25 : 0;
+
+        double adjustedEnergyPrice = measurement.EnergyPrice.Value * (1 + surchargePercentage);
+        double priceChangeWithSurcharge = adjustedEnergyPrice * kiloWattValue * timeFactor;
+
+        lock (lockObject)
+        {
+            totalUsage += kiloWattValue;
+            totalPriceNoAddition += measurement.EnergyPrice.Value * kiloWattValue * timeFactor;
+            totalPrice += priceChangeWithSurcharge;
+        }
+    });
+
+    double averageSurchargePercentage = surchargeCount > 0 ? totalSurchargePercentage / surchargeCount * 100 : 0;
+    return new List<double?> { totalPrice, totalPriceNoAddition, totalUsage, averageSurchargePercentage };
+}
 ```
 
-#### 3. Initialiseer een dotnet user-secrets-bestand
+---
 
-Voer de volgende opdracht uit om een 'geheim' bestand te genereren. Dit bestand wordt opgeslagen in je 'user directory' en bevat de noodzakelijke gevoelige gegevens voor de applicatie:
-```sh
-dotnet user-secrets init
-```
+## Limitations
+- **Database Dependency:** The application cannot function without a live connection to the InfluxDB database.
+- **Scalability:** Designed as a prototype; additional optimizations would be required but are not possible because project ended.
 
-#### 4. Configureer gevoelige gegevens (secrets)
-
-Gebruik de volgende opdrachten om de secrets in te stellen. De juiste waarden voor de secrets kun je vinden op Brightspace.
-
-```sh
-dotnet user-secrets set "InfluxDb:Url" "your_influxdb_url"
-dotnet user-secrets set "InfluxDb:Token" "your_influxdb_token"
-dotnet user-secrets set "InfluxDb:Org" "your_influxdb_organization"
-```
-
-**Tip: kopieer bovenstaande regels eerst in een tekst-editor en voeg de juiste waardes in alvorens je ze plakt in de CLI.**
-
-Na het succesvol uitvoeren van deze stappen zijn je secrets opgeslagen op jouw machine en kan de applicatie hier gebruik van maken.
-
-
-## Applicatiestructuur
-
-De appplicatie is opgeslitst in twee delen: het gedeelte dat verantwoordelijk is voor de webapplicatie (SmartEnergy.Client) en het gedeelte dat zorgt voor de verbinding met de database van het lectoraat (SmartEnergy.Library).
-
-### SmartEnergy.Client
-
-Dit is de webapplicatie zelf en het enige project binnen deze oplossing dat je kunt starten. Het betreft een .NET Blazor webapplicatie die opgebouwd is doormiddel van van C#, HTML en CSS. **In dit project voer jij de aanpassingen door om je persoonlijke opdracht te voltooien**.
-
-Deze webapplicatie maakt gebruik Bootstrap: een open-source front-end framework dat wordt gebruikt voor het ontwikkelen van responsieve en mobiele-vriendelijke websites en webapplicaties. Het biedt een verzameling van HTML-, CSS- en JavaScript-componenten waarmee ontwikkelaars snel en eenvoudig aantrekkelijke, functionele interfaces kunnen bouwen zonder veel handmatig te hoeven programmeren. Kijk voor voorbeelden en documentatie op https://getbootstrap.com/docs/5.1/getting-started/introduction/. 
-
-### SmartEnergy.Library
-
-Een library bestaat uit code, maar kan niet zelfstandig worden uitgevoerd. In plaats daarvan wordt de code in een library gebruikt door andere applicaties binnen een project.
-
-In dit geval bevat de library bijvoorbeeld code die we hebben geschreven om verbinding te maken met de database van het lectoraat, waarin alle gegevens van de Smart Meters zijn opgeslagen. Je hoeft deze code niet aan te passen om je opdracht succesvol te voltooien, maar je kunt de library wel gebruiken om te debuggen.
-
-## Werken met Visual Studio Code
-
-Wanneer je aan deze applicatie gaat werken, kun je Visual Studio Code gebruiken. Er zijn (helaas) twee verschillende profielen om de applicatie te starten:
-
-### Debug
-
-- **Voordeel:** Een browser wordt geopend met de applicatie, en breakpoints worden geraakt, wat het debuggen van back-end code eenvoudiger maakt.
-- **Nadeel:** Na een codewijziging moet je de debug-sessie opnieuw starten.
-
-### Hot Reload
-
-- **Voordeel:** Een browser wordt geopend met de applicatie, en zodra je code aanpast, wordt de browser automatisch ververst.
-- **Nadeel:** Breakpoints worden niet geraakt.
-
-## Werken met Visual Studio of JetBrains Rider
-
-Bij het ontwikkelen van onderwijsmateriaal deze periode hebben we ons beperkt tot Visual Studio Code. Momenteel biedt Visual Studio echter de beste ondersteuning voor het ontwikkelen van Blazor-applicaties. Je kunt deze applicatie verder ontwikkelen in de gratis Visual Studio Community-editie. Ook JetBrains Rider is een populair alternatief. Wanneer je één van deze IDE's (Integrated Development Environments) gebruikt kan het zijn dat een docent je niet goed kan ondersteunen wanneer je vast loopt. Dit hoeft natuurlijk geen onoverkomelijk probleem te zijn, er zijn voldoende online bronnen die je verder kunnen helpen. 
+---

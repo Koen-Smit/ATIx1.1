@@ -923,11 +923,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dhr Smit\\Documents\\Programming\\Projects\\project folder\\avans\\smartenergy\\ICT1.1-SmartEnergy-Project\\SmartEnergy.Client\\SmartEnergy.Client.csproj",
+      "projectUniqueName": "C:\\Users\\Dhr Smit\\Documents\\Programming\\Projects\\project folder\\ATIx1.1-Smart-Meter-Data-Processing-2024-25-P1\\SmartEnergy.Client\\SmartEnergy.Client.csproj",
       "projectName": "SmartEnergy.Client",
-      "projectPath": "C:\\Users\\Dhr Smit\\Documents\\Programming\\Projects\\project folder\\avans\\smartenergy\\ICT1.1-SmartEnergy-Project\\SmartEnergy.Client\\SmartEnergy.Client.csproj",
+      "projectPath": "C:\\Users\\Dhr Smit\\Documents\\Programming\\Projects\\project folder\\ATIx1.1-Smart-Meter-Data-Processing-2024-25-P1\\SmartEnergy.Client\\SmartEnergy.Client.csproj",
       "packagesPath": "C:\\Users\\Dhr Smit\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dhr Smit\\Documents\\Programming\\Projects\\project folder\\avans\\smartenergy\\ICT1.1-SmartEnergy-Project\\SmartEnergy.Client\\obj\\",
+      "outputPath": "C:\\Users\\Dhr Smit\\Documents\\Programming\\Projects\\project folder\\ATIx1.1-Smart-Meter-Data-Processing-2024-25-P1\\SmartEnergy.Client\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -948,8 +948,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Dhr Smit\\Documents\\Programming\\Projects\\project folder\\avans\\smartenergy\\ICT1.1-SmartEnergy-Project\\SmartEnergy.Library\\SmartEnergy.Library.csproj": {
-              "projectPath": "C:\\Users\\Dhr Smit\\Documents\\Programming\\Projects\\project folder\\avans\\smartenergy\\ICT1.1-SmartEnergy-Project\\SmartEnergy.Library\\SmartEnergy.Library.csproj"
+            "C:\\Users\\Dhr Smit\\Documents\\Programming\\Projects\\project folder\\ATIx1.1-Smart-Meter-Data-Processing-2024-25-P1\\SmartEnergy.Library\\SmartEnergy.Library.csproj": {
+              "projectPath": "C:\\Users\\Dhr Smit\\Documents\\Programming\\Projects\\project folder\\ATIx1.1-Smart-Meter-Data-Processing-2024-25-P1\\SmartEnergy.Library\\SmartEnergy.Library.csproj"
             }
           }
         }
