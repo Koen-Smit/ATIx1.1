@@ -11,7 +11,7 @@ Voor deze opdracht kon gekozen worden uit verschillende varianten, die elk een a
 - [Handleiding voor het aansluiten van de meter](Assets/Opdrachtomschrijving/Handleiding.pptx)
 
 
-**Belangrijk**: Deze applicatie kan niet meer correct worden gebruikt, omdat de meters niet langer aangesloten zijn en geen data meer produceren. Bovendien heb ik geen toegang meer tot de database.
+**Belangrijk**: Deze applicatie kan niet meer correct worden gebruikt, omdat de meters niet langer aangesloten zijn en geen data meer produceren. Bovendien heb ik geen toegang meer tot de door school geleverde database.
 
 ![Demo](Assets/Readme_addons/Grafiek_weergave.gif)
 
