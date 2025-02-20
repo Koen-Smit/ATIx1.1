@@ -57,3 +57,4 @@ Assets/Oplevering/site.mp4
 obj/
 bin/
 .vscode/
+SmartEnergy.Client/obj/Debug/net8.0/SmartEnergy.Client.AssemblyInfo.cs
