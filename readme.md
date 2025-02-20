@@ -1,41 +1,44 @@
-# Year 1, Semester 1: ATIx ICT-B1.1 Smart Meter Data Processing (2024-25)
+# Jaar 1, Periode 1: ATIx ICT-B1.1 Smart Meter Data Processing (2024-25)
 - (04-09-2024 / 01/11/2024)
-
-**Built with:** Blazor (.NET C#, HTML, CSS, Bootstrap, JavaScript)
+- Eindpunt: **10**
+- **Stack:** Blazor (.NET C#, HTML, CSS, Bootstrap, JavaScript)
 
 ## Project Overview
-This project was developed as part of the first-year, first-period coursework for ATIx ICT-B1.1. The primary goal was to process and visualize data collected from smart meters connected to residential electricity and gas systems. 
+Dit project is het eerste project van mijn opleiding Informatica. De applicatie is ontwikkeld om data te genereren en te visualiseren met behulp van een "Smart Meter". Deze meters voerden metingen uit voor onder andere elektriciteit en gas.
 
-### Functionality
-- **Data Visualization:** Tables and charts to analyze electricity and gas usage.
-- **Dynamic Tariff Calculations:** Algorithms to compute energy costs based on real-time tariffs, including surcharges for high power usage.
-- **Customizable Analysis:** Adjustable time periods for data aggregation and analysis.
+Voor deze opdracht kon gekozen worden uit verschillende varianten, die elk een andere invalshoek en opdracht boden. De geselecteerde opdrachtvariant en de handleiding voor het aansluiten van de meter zijn te vinden in de map `Assets/Opdrachtomschrijving`.
 
-### Context
-This project was graded a 10 (out of 10). However, the application can no longer be used because the database it relies on has been decommissioned and is no longer connected to any live smart meters(as far as I know).
+**Belangrijk**: Deze applicatie kan niet meer correct worden gebruikt, omdat de meters niet langer aangesloten zijn en geen data meer produceren. Bovendien heb ik geen toegang meer tot de database.
+
+![Demo](Assets/Readme_addons/Grafiek_weergave.gif)
+
+### Functionaliteit:
+- **Data visualisatie ->** Tabellen en grafieken voor elektriciteitsverbruik en andere gegevens.
+- **Dynamische tariefberekeningen ->** Algoritmes om energiekosten te berekenen op basis van realtime tarieven, inclusief toeslagen voor hoog stroomverbruik.
+- **Aanpasbare analyse ->** Instelbare tijdsperioden voor gegevensaggregatie en analyse.
 
 ---
 
-## Prerequisites
-This project relies on an InfluxDB database to store and query smart meter data. Sensitive credentials like database URLs, tokens, and organization details must be configured on your local machine using `.NET user-secrets`.
+## Vereisten
+Dit project maakt gebruik van een InfluxDB-database om gegevens van de slimme meter op te slaan en op te vragen. Gevoelige gegevens zoals database-URL's, tokens en organisatiedetails moeten op je lokale machine worden geconfigureerd met `.NET user-secrets`.
 
-### Setting Up InfluxDB
+### InfluxDB instellen:
 
-1. **Open a Command Line Interface (CLI):**
-   - You can use Command Prompt (CMD), PowerShell, or any Bash-compatible terminal.
+1. **Open een Command Line Interface (CLI):**
+   - Je kunt hiervoor de Command Prompt (CMD), PowerShell of een Bash-compatibele terminal gebruiken.
 
-2. **Navigate to the Project Directory:**
+2. **Navigeer naar de projectmap:**
    ```bash
    cd path_to_your_project/SmartEnergy/SmartEnergy.Client
    ```
 
-3. **Initialize User-Secrets:**
+3. **Initialiseer User-Secrets:**
    ```bash
    dotnet user-secrets init
    ```
 
-4. **Set InfluxDB Credentials:**
-   Replace placeholders with actual values:
+4. **Stel InfluxDB-referenties in:**
+   Vervang de placeholders door de juiste waarden:
    ```bash
    dotnet user-secrets set "InfluxDb:Url" "your_influxdb_url"
    dotnet user-secrets set "InfluxDb:Token" "your_influxdb_token"
@@ -44,38 +47,41 @@ This project relies on an InfluxDB database to store and query smart meter data.
 
 ---
 
-## Application Structure
-The project is split into two main components:
+## Applicatiestructuur
+Het project is opgedeeld in twee hoofdcomponenten:
 
 ### 1. **SmartEnergy.Client**
-   - A Blazor-based web application responsible for front-end functionality.
-   - Built with **Bootstrap** for responsive design. [Bootstrap Documentation](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
+   - Een Blazor-gebaseerde webapplicatie die verantwoordelijk is voor de frontend-functionaliteit.
+   - Gebouwd met **Bootstrap** voor een grotendeels responsive ontwerp. [Bootstrap Documentation](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
 
-   **Features:**
-   - Interactive dashboards and controls for customizing time periods.
-   - Dynamic charts to visualize usage, costs, and surcharges.
+![Demo](Assets/Readme_addons/Voorpagina_weergave.gif)
+![Demo](Assets/Readme_addons/Instellingen_weergave.gif)
+
+   **Kenmerken:**
+   - Interactieve dashboards en bedieningspanelen voor het aanpassen van tijdsperioden.
+   - Dynamische grafieken om verbruik, kosten en toeslagen te visualiseren.
 
 ### 2. **SmartEnergy.Library**
-    (MOSTLY MADE BY SCHOOL!)
-   - Contains backend logic for querying the database and processing data.
-   - Handles API calls to retrieve smart meter measurements.
+Naast een paar aanpassingen voornamelijk geleverd door school!
+   - Bevat de backend-logica voor het opvragen en verwerken van gegevens uit de database.
+   - Handelt API-aanroepen af om "slimme meter"-metingen op te halen.
 
 ---
 
-## Development Environment
+## Ontwikkelomgeving
 
 ### Run Profiles
-- **Debug Mode:** Enables breakpoints for backend debugging but requires restarting after code changes.
-- **Hot Reload:** Automatically refreshes the browser after code changes but does not support breakpoints.
+- **Debug Mode:** Hiermee kunnen breakpoints worden gebruikt voor het debuggen van de backend, maar de applicatie moet opnieuw worden gestart na codewijzigingen.
+- **Hot Reload:** Vernieuwt de browser automatisch na codewijzigingen, maar ondersteunt geen breakpoints.
 
 ---
 
 ## Core Algorithm
-The application calculates energy usage and costs over a customizable time period. It dynamically applies surcharges based on power usage thresholds. Key calculations include:
+De applicatie berekent energieverbruik en kosten over een aanpasbare tijdsperiode. Er worden dynamisch toeslagen toegepast op basis van drempelwaarden voor stroomverbruik. Een paar belangrijke berekeningen:
 
-- **Total Usage (kWh):** Aggregated over the selected time period.
-- **Base Cost:** Calculated using dynamic energy tariffs.
-- **Surcharge:** Applied progressively based on the following thresholds:
+- **Total Usage (kWh):** Geaggregeerd over de geselecteerde tijdsperiode.
+- **Base Cost:** Berekend op basis van dynamische energietarieven.
+- **Toeslag:** Progressief toegepast volgens de volgende drempelwaarden:
   
   | Power Usage (Watt) | Surcharge (%) |
   |--------------------|---------------|
@@ -87,8 +93,8 @@ The application calculates energy usage and costs over a customizable time perio
 
 ---
 
-## Usage Example
-The following code snippet demonstrates the main logic:
+## Gebruiksvoorbeeld
+De volgende code laat de hoofdlogica zien:
 
 ```csharp
 private List<double?> CalculatePrice(List<Measurement> measurements, string aggregationWindow)
@@ -141,11 +147,17 @@ private List<double?> CalculatePrice(List<Measurement> measurements, string aggr
     return new List<double?> { totalPrice, totalPriceNoAddition, totalUsage, averageSurchargePercentage };
 }
 ```
+---
+
+![Demo](Assets/Readme_addons/Totale_weergave.gif)
 
 ---
 
-## Limitations
-- **Database Dependency:** The application cannot function without a live connection to the InfluxDB database.
-- **Scalability:** Designed as a prototype; additional optimizations would be required but are not possible because project ended.
+## Beperkingen
+- De applicatie kan niet functioneren zonder een actieve verbinding met de InfluxDB-database. 
+- Ontworpen als een prototype.
+
+
+Ik zou de database graag aanpassen naar een lokale versie om testdata op te halen. Echter, ik zie hier weinig uitdaging in, en andere projecten hebben mijn grotere interesse en prioriteit. Bovendien is de functionaliteit hier al goed gedocumenteerd.
 
 ---
