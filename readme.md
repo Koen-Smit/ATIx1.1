@@ -6,7 +6,10 @@
 ## Project Overview
 Dit project is het eerste project van mijn opleiding Informatica. De applicatie is ontwikkeld om data te genereren en te visualiseren met behulp van een "Smart Meter". Deze meters voerden metingen uit voor onder andere elektriciteit en gas.
 
-Voor deze opdracht kon gekozen worden uit verschillende varianten, die elk een andere invalshoek en opdracht boden. De geselecteerde opdrachtvariant en de handleiding voor het aansluiten van de meter zijn te vinden in de map `Assets/Opdrachtomschrijving`.
+Voor deze opdracht kon gekozen worden uit verschillende varianten, die elk een andere invalshoek en opdracht boden.
+- [Geselecteerde opdrachtvariant](Assets/Opdrachtomschrijving/Opdrachtvariant_H.pdf)
+- [Handleiding voor het aansluiten van de meter](Assets/Opdrachtomschrijving/Handleiding.pptx)
+
 
 **Belangrijk**: Deze applicatie kan niet meer correct worden gebruikt, omdat de meters niet langer aangesloten zijn en geen data meer produceren. Bovendien heb ik geen toegang meer tot de database.
 
@@ -16,6 +19,10 @@ Voor deze opdracht kon gekozen worden uit verschillende varianten, die elk een a
 - **Data visualisatie ->** Tabellen en grafieken voor elektriciteitsverbruik en andere gegevens.
 - **Dynamische tariefberekeningen ->** Algoritmes om energiekosten te berekenen op basis van realtime tarieven, inclusief toeslagen voor hoog stroomverbruik.
 - **Aanpasbare analyse ->** Instelbare tijdsperioden voor gegevensaggregatie en analyse.
+
+### Design opdrachten:
+- [Flowchart prototype](Assets/Designs/Flowchart_prototype.pdf)
+- [Wireframe prototype](Assets/Designs/Wireframe_protoype.PNG)
 
 ---
 
