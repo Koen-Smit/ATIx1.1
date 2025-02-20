@@ -22,7 +22,7 @@ Voor deze opdracht kon gekozen worden uit verschillende varianten, die elk een a
 
 ### Design opdrachten:
 - [Flowchart prototype](Assets/Designs/Flowchart_prototype.pdf)
-- [Wireframe prototype](Assets/Designs/Wireframe_protoype.PNG)
+- [Wireframe prototype](Assets/Designs/Wireframe_prototype.PNG)
 
 ---
 
