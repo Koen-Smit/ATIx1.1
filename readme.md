@@ -8,7 +8,7 @@ Dit project is het eerste project van mijn opleiding Informatica. De applicatie 
 
 Voor deze opdracht kon gekozen worden uit verschillende varianten, die elk een andere invalshoek en opdracht boden. De geselecteerde opdrachtvariant en de handleiding voor het aansluiten van de meter zijn te vinden in de map `Assets/Opdrachtomschrijving`.
 
-**Belangrijk**: Deze applicatie kan niet meer correct worden gebruikt, omdat de meters niet langer aangesloten zijn en geen data meer produceren. Bovendien heb ik geen toegang meer tot de database.
+**Belangrijk**: Deze applicatie kan niet meer correct worden gebruikt, omdat de meters niet langer aangesloten zijn en geen data meer produceren. Bovendien heb ik geen toegang meer tot de door school geleverde database.
 
 ![Demo](Assets/Readme_addons/Grafiek_weergave.gif)
 
