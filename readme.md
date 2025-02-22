@@ -7,7 +7,7 @@
 Dit project is het eerste project van mijn opleiding Informatica. De applicatie is ontwikkeld om data te genereren en te visualiseren met behulp van een "Smart Meter". Deze meters voerden metingen uit voor onder andere elektriciteit en gas.
 
 Voor deze opdracht kon gekozen worden uit verschillende varianten, die elk een andere invalshoek en opdracht boden.
-- [Geselecteerde opdrachtvariant](Assets/Opdrachtomschrijving/Opdrachtvariant_H.pdf)
+- [Gekozen opdrachtvariant](Assets/Opdrachtomschrijving/Opdrachtvariant_H.pdf)
 - [Handleiding voor het aansluiten van de meter](Assets/Opdrachtomschrijving/Handleiding.pptx)
 
 
