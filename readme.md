@@ -1,7 +1,7 @@
-# Jaar 1, Periode 1: ATIx ICT-B1.1 Smart Meter Data Processing (2024-25)
-- (04-09-2024 / 01/11/2024)
+# Avans HBO Jaar 1, Periode 1: ATIx ICT-B1.1 Smart Meter Data Processing (2024-25)
+- (04-09-2024 / 01-11-2024)
 - Eindpunt: **10**
-- **Stack:** Blazor (.NET C#, HTML, CSS, Bootstrap, JavaScript)
+- **Stack:** (Blazor, .NET, C#, HTML, CSS, Bootstrap, JavaScript)
 
 ## Project Overview
 Dit project is het eerste project van mijn opleiding Informatica. De applicatie is ontwikkeld om data te genereren en te visualiseren met behulp van een "Smart Meter". Deze meters voerden metingen uit voor onder andere elektriciteit en gas.
